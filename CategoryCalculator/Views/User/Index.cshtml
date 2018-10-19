@@ -53,29 +53,19 @@
 
 
 <script>
-        (function () {
-            $("#btnUserInfo").click(function () {
-                debugger;
-                var userInfo = {};
-                userInfo.Name = $("#txtName").val();
-                userInfo.Age = $("#txtAge").val();
-                userInfo.Height = $("#txtHieght").val();
+    (function () {
+        $("#btnUserInfo").click(function () {
+            debugger;
+            var userInfo = {};
+            userInfo.Name = $("#txtName").val();
+            userInfo.Age = $("#txtAge").val();
+            userInfo.Height = $("#txtHieght").val();
 
-                var userInput = JSON.stringify(userInfo);
+            var userInput = JSON.stringify(userInfo);
 
-                $.ajax({
-                    type: "Post",
-                    url: '<%=@Url.Action("SaveUserInfo", "User")%>',
-                    data: '{"objinfo":"'+userInfo+'"}',
-                    dataType: "json",
-                    contentType: "application/json charset=utf-8",
-                    sucess: function (response) {
-                        $("#lblmsg").text(response);
-                    },
-                    error: function (error) {
-                        console.dir(error);
-                    }
-                })
+            $.post("/User/SaveUserInfo", userInfo, function (data) {
+                alert(data)
             })
-        })();
+        })
+    })();
 </script>
