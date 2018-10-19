@@ -17,6 +17,7 @@ namespace CategoryCalculator.Controllers
          
         public ActionResult SaveUserInfo(UserInput objinfo)
         {
+            var _output =(objinfo.Age/objinfo.Height)*objinfo.Height;
             return new EmptyResult();
         }
     }
