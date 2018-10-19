@@ -18,7 +18,7 @@ namespace CategoryCalculator.Controllers
         [HttpPost]
         public ActionResult SaveUserInfo(UserInput objinfo)
         {
-            return View();
+            return new EmptyResult();
         }
     }
 }
