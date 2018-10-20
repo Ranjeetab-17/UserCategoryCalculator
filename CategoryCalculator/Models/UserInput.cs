@@ -7,8 +7,9 @@ namespace CategoryCalculator.Models
 {
     public class UserInput
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public int Height { get; set; }
+        public decimal Height { get; set; }
     }
 }
