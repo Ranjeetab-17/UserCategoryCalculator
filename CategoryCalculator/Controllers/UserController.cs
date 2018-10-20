@@ -14,12 +14,16 @@ namespace CategoryCalculator.Controllers
         {
             return View();
         }
-         
+
         public ActionResult SaveUserInfo(UserInput objinfo)
         {
             UserDBContext objUserDBContext = new UserDBContext();
-            var user=objUserDBContext.userInputs.ToList();
-            var _output =(objinfo.Age/objinfo.Height)*objinfo.Height;
+            var user = objUserDBContext.userInputs.ToList();
+
+            objUserDBContext.userInputs.Add(objinfo);
+            objUserDBContext.SaveChanges();
+
+            var _output = (objinfo.Age / objinfo.Height) * objinfo.Height;
             return new EmptyResult();
         }
     }
