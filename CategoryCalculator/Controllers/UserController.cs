@@ -9,22 +9,25 @@ namespace CategoryCalculator.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+
+        UserDBContext objUserDBContext = new UserDBContext();
+         
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult SaveUserInfo(UserInput objinfo)
-        {
-            UserDBContext objUserDBContext = new UserDBContext();
-            var user = objUserDBContext.userInputs.ToList();
-
+        public string SaveUserInfo(UserInput objinfo)
+        {          
             objUserDBContext.userInputs.Add(objinfo);
-            objUserDBContext.SaveChanges();
+            objUserDBContext.SaveChanges();            
+            return "xyz category";
+        }
 
-            var _output = (objinfo.Age / objinfo.Height) * objinfo.Height;
-            return new EmptyResult();
+        public ActionResult GetUserList()
+        {
+            List<UserInput> objList = new List<UserInput>();           
+            return View(objUserDBContext.userInputs);
         }
     }
 }

@@ -8,10 +8,17 @@
     <title>Index</title>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Libraries/sweetalert/js/sweetalert2.js"></script>
+    <link href="~/Libraries/sweetalert/css/sweetalert2.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body class="container">
     <div class="row" style="margin-top:50px;">
+
+        <div class="offset-7">
+            @Html.ActionLink("User List", "GetUserList")
+        </div>
+
         <div class="offset-4 col-lg-4">
             <div class="row">
                 <div class="col-lg-2" style="margin-top:10px">
@@ -51,6 +58,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
 
@@ -67,7 +75,11 @@
             var userInput = JSON.stringify(userInfo);
 
             $.post("/User/SaveUserInfo", userInfo, function (data) {
-                alert(data)
+                swal(
+                    'User Created!',
+                    data,
+                    'success'
+                )
             })
         })
 

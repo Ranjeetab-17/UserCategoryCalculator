@@ -11,5 +11,6 @@ namespace CategoryCalculator.Models
         public string Name { get; set; }
         public int Age { get; set; }
         public decimal Height { get; set; }
+        //public decimal result { get; set; }
     }
 }

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CategoryCalculator.Models.UserInput>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetUserList</title>
+
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body class="container-fluid">
+
+    <div class="row" style="margin-top:50px;">
+        <div class="offset-10">
+            @Html.ActionLink("New User", "Index")
+        </div>
+    </div>
+
+    <table class="table table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                Result
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td>
+                    @{
+                        string result = (Math.Round(item.Age / item.Height * item.Height,2)).ToString();
+                    }
+                    @Html.DisplayFor(modelItem => result)
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
