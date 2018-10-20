@@ -38,8 +38,11 @@
                 </div>
             </div>
             <div class="row" style="margin-top:10px">
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <input type="button" id="btnUserInfo" class="btn btn-outline-primary" name="name" value="Submit" />
+                </div>
+                <div class="col-lg-3">
+                    <input type="button" id="btnClear" class="btn btn-outline-danger" name="name" value="Clear" />
                 </div>
             </div>
             <div class="row" style="margin-top:10px">
@@ -54,7 +57,7 @@
 
 <script>
     (function () {
-        $("#btnUserInfo").click(function () {           
+        $("#btnUserInfo").click(function () {
             var userInfo = {};
             userInfo.Name = $("#txtName").val();
             userInfo.Age = $("#txtAge").val();
@@ -66,5 +69,23 @@
                 alert(data)
             })
         })
+
+        $("#txtHieght").blur(function () {
+            var _age = $("#txtAge").val();
+            var _height = $(this).val();
+            var result = (_age / _height) * _height;
+            $("#lblmsg").text("Hi " + $("#txtName").val() + " your result is " + result);
+        })
+
+        $("#btnClear").click(function () {
+            Reset();
+        })
+
+        function Reset() {
+            $("#txtAge").val("");
+            $("#txtName").val("");
+            $("#txtHieght").val("");
+            $("#lblmsg").text("");
+        }
     })();
 </script>
